@@ -23,4 +23,7 @@ enable_dangerous_mechanism_in_clair = false
 [app.vsl]
 filepath = "/etc/vsmtp/main.vsl"
 
+[server.logs]
+filepath = "/var/log/vsmtp"
+level = [ "warn" ]
 
