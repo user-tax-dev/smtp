@@ -5,13 +5,18 @@ cd $DIR
 
 cd ../key/smtp
 host=user.tax
-openssl genrsa -out $host.pem 2048
+day=$(node -e "console.log(parseInt(new Date()/1e6/864).toString(36))")
 
-txt=$(openssl rsa -in $host.pem -pubout -outform der 2>/dev/null | openssl base64 -A)
+mkdir -p $host
+cd $host
 
-day=$(node -e "console.log(parseInt(new Date()/1e7/864).toString(36))")
+openssl genrsa -out $day.pem 2048
+
+git add .
+git commit -m "."
+git push
+
+txt=$(openssl rsa -in $day.pem -pubout -outform der 2>/dev/null | openssl base64 -A)
 
 echo -e "\nset txt\n$day._domainkey.$host"
 echo -e "v=DKIM1; k=rsa; p=$txt"
-
-
