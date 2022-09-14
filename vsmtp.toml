@@ -16,7 +16,8 @@ protocol_version = ["TLSv1.2", "TLSv1.3"]
 certificate = "/mnt/www/.acme.sh/iuser.in/fullchain.cer"
 private_key = "/mnt/www/.acme.sh/iuser.in/iuser.in.key"
 
-[server.virtual."iuser.in".dkim]
+#[server.virtual."iuser.in".dkim]
+#1hg._domainkey.iuser.in=/root/user/key/smtp/iuser.in/1hg.pem
 
 [server.smtp.auth]
 must_be_authenticated = true
