@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 DIR=$(dirname $(dirname $(realpath "$0")))
+
+[ -z "$1" ] && echo "usage : ./$0 xxx.com" && exit 1
+
 host=$1
+
 SMTP=$DIR/key/smtp/$host
 
 mkdir -p $SMTP
