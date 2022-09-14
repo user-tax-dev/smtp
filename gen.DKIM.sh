@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 
-DIR=$(dirname $(realpath "$0"))
-cd $DIR
+DIR=$(dirname $(dirname $(realpath "$0")))
+host=$1
+SMTP=$DIR/key/smtp/$host
 
-cd ../key/smtp
-host=user.tax
+mkdir -p $SMTP
+cd $SMTP
 day=$(node -e "console.log(parseInt(new Date()/1e6/864).toString(36))")
 
-mkdir -p $host
-cd $host
+if [ -f "$day.pem" ]; then
+echo "exist $SMTP/$day.pem"
+exit 0
+fi
+
 
 openssl genrsa -out $day.pem 2048
 
