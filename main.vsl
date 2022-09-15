@@ -2,4 +2,11 @@
   authenticate: [
     rule "auth /etc/shadow" || { authenticate() }
   ],
+  postq: [
+    action "sign dkim" || {
+      if in_domain(mail_from()) {
+        dkim_sign("1hg");
+      } 
+    }
+  ],
 }
