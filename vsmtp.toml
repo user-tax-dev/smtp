@@ -10,6 +10,7 @@ addr_submissions = ["62.171.170.189:465","[2a02:c207:2098:9386::1]:465"]
 
 [server.tls]
 security_level = "Encrypt"
+#security_level = "May"
 protocol_version = ["TLSv1.3"]
 certificate = "/mnt/www/.acme.sh/user.tax/fullchain.cer"
 private_key = "/mnt/www/.acme.sh/user.tax/user.tax.key"
